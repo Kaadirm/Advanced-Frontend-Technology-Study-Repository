@@ -1,3 +1,5 @@
+import Feed from '@/components/Feed';
+
 const Home = () => {
     return (
         <section className="w-full h-screen flex-center flex-col">
@@ -11,7 +13,7 @@ const Home = () => {
                 to discover, create and share creative prompts
             </p>
 
-            {/* Feed */}
+            <Feed />
         </section>
     );
 };
