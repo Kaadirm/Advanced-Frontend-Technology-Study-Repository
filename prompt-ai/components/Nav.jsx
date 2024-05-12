@@ -4,16 +4,16 @@ import Image from 'next/image';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 const Nav = () => {
-    const isUserLoggedIn = true;
+    const { data: session } = useSession();
     const [providers, setProviders] = useState(null);
     const [toggleDropdown, setToggleDropdown] = useState(false);
 
     useEffect(() => {
-        const setProviders = async () => {
-            const response = await getProviders();
-            setProviders(response);
+        const fetchProviders = async () => {
+            const data = await getProviders();
+            setProviders(data);
         };
-        setProviders();
+        fetchProviders();
     }, []);
     return (
         <nav className="flex-between w-full mb-16 pt-3">
@@ -27,9 +27,10 @@ const Nav = () => {
                 />
                 <p className="logo_text">Prompt AI</p>
             </Link>
+
             {/* Desktop Navigation */}
             <div className="sm:flex hidden">
-                {isUserLoggedIn ? (
+                {session?.user ? (
                     <div className="flex gap-3 md:gap-5">
                         <Link href="/create-prompt" className="black_btn">
                             Create Post
@@ -69,7 +70,7 @@ const Nav = () => {
             </div>
             {/* Mobile Navigation */}
             <div className="sm:hidden flex relative">
-                {isUserLoggedIn ? (
+                {session?.user ? (
                     <div className="flex">
                         <Image
                             src="/assets/images/logo.svg"
