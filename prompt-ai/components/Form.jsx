@@ -10,6 +10,25 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
                 {type} and share amazing prompts with the world, and let your
                 imagination run wild with AI-powered platform.
             </p>
+            <form
+                onSubmit={handleSubmit}
+                className="mt-10 w-full max-w-2xl flex flex-col gap-7 rounded-xl border border-gray-200 bg-white/20 shadow-inset -top-10 -left-50 h-94 bg-gray-200 bg-opacity-20 backdrop-blur p-5"
+            >
+                <label>
+                    <span className="font-satoshi font-semibold text-base text-gray-700">
+                        Your AI Prompt
+                    </span>
+                    <textarea
+                        value={post.prompt}
+                        onChange={(e) =>
+                            setPost({ ...post, prompt: e.target.value })
+                        }
+                        className="form_textarea"
+                        placeholder="Write your prompt here..."
+                        required
+                    />
+                </label>
+            </form>
         </section>
     );
 };
