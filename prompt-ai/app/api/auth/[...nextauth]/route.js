@@ -39,7 +39,8 @@ const handler = NextAuth({
                 return false;
             }
         }
-    }
+    },
+    trustHost: true
 });
 
 export { handler as GET, handler as POST };
