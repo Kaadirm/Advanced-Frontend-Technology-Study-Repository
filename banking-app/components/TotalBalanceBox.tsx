@@ -1,5 +1,5 @@
-import AnimatedCounter from './AnimatedCounter';
-import DoughnutChart from './DoughnutChart';
+import AnimatedCounter from '@/components/AnimatedCounter';
+import DoughnutChart from '@/components/DoughnutChart';
 
 const TotalBalanceBox = ({
     accounts,
