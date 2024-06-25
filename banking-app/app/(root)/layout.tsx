@@ -1,3 +1,5 @@
+import Sidebar from '@/components/Sidebar';
+
 export default function RootLayout({
     children
 }: Readonly<{
@@ -5,7 +7,7 @@ export default function RootLayout({
 }>) {
     return (
         <main className="flex h-screen w-full font-inter">
-            SIDEBAR
+            <Sidebar />
             {children}
         </main>
     );
