@@ -60,7 +60,9 @@ const MobileNav = ({ user }: MobileNavProps) => {
                                                     'mobilenav-sheet_close w-full',
                                                     {
                                                         'bg-bank-gradient':
-                                                            isActive
+                                                            isActive,
+                                                        'hover:bg-blue-100':
+                                                            !isActive
                                                     }
                                                 )}
                                             >
