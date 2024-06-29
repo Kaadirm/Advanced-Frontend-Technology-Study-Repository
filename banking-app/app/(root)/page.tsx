@@ -3,7 +3,11 @@ import TotalBalanceBox from '@/components/TotalBalanceBox';
 import RightSidebar from './../../components/RightSidebar';
 
 const Home = () => {
-    const loggedIn = { firstName: 'Kadir' };
+    const loggedIn = {
+        firstName: 'Kadir',
+        lastName: 'MMS',
+        email: 'kadir@gmail.com'
+    };
     return (
         <div className="home">
             <div className="home-content">
@@ -22,7 +26,11 @@ const Home = () => {
                 </header>
                 RECENT TRANSACTIONS
             </div>
-            <RightSidebar user={loggedIn} transaction={[]} banks={[]} />
+            <RightSidebar
+                user={loggedIn}
+                transaction={[]}
+                banks={[{ currentBalance: 123.5 }, { currentBalance: 500.5 }]}
+            />
         </div>
     );
 };
