@@ -22,7 +22,7 @@ const Home = () => {
                 </header>
                 RECENT TRANSACTIONS
             </div>
-            <RightSidebar />
+            <RightSidebar user={loggedIn} transaction={[]} banks={[]} />
         </div>
     );
 };
