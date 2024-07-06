@@ -17,19 +17,16 @@ import {
     FormMessage
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-
-const formSchema = z.object({
-    username: z.string().min(2, {
-        message: 'Username must be at least 2 characters.'
-    })
-});
+import { authFormSchema } from '@/lib/utils';
+import CustomInput from '@/components/CustomInput';
 
 const AuthForm = ({ type }: { type: string }) => {
     // 1. Define your form.
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<z.infer<typeof authFormSchema>>({
+        resolver: zodResolver(authFormSchema),
         defaultValues: {
-            username: ''
+            email: '',
+            password: ''
         }
     });
 
@@ -83,24 +80,17 @@ const AuthForm = ({ type }: { type: string }) => {
                             onSubmit={form.handleSubmit(onSubmit)}
                             className="space-y-8"
                         >
-                            <FormField
+                            <CustomInput
                                 control={form.control}
                                 name="username"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Username</FormLabel>
-                                        <FormControl>
-                                            <Input
-                                                placeholder="shadcn"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                        <FormDescription>
-                                            This is your public display name.
-                                        </FormDescription>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
+                                label="Username"
+                                placeholder="Enter your username"
+                            />
+                            <CustomInput
+                                control={form.control}
+                                name="password"
+                                label="Password"
+                                placeholder="Enter your password"
                             />
                             <Button type="submit">Submit</Button>
                         </form>
