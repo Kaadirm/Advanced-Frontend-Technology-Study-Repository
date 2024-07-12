@@ -19,8 +19,18 @@ import {
 import { Input } from '@/components/ui/input';
 import { authFormSchema } from '@/lib/utils';
 import CustomInput from '@/components/CustomInput';
+import { Loader2 } from 'lucide-react';
 
 const AuthForm = ({ type }: { type: string }) => {
+    const [user, setUser] = useState(null);
+    const {
+        handleSubmit,
+        control,
+        setValue,
+        // reset: resetForm,
+        getValues: getFormValues,
+        formState: { errors, isSubmitting, isLoading }
+    } = useForm();
     // 1. Define your form.
     const form = useForm<z.infer<typeof authFormSchema>>({
         resolver: zodResolver(authFormSchema),
@@ -36,8 +46,6 @@ const AuthForm = ({ type }: { type: string }) => {
         // ✅ This will be type-safe and validated.
         console.log(values);
     }
-
-    const [user, setUser] = useState(null);
     return (
         <section className="auth-form">
             <header className="flex flex-col gap-5 md:gap-8">
@@ -91,8 +99,24 @@ const AuthForm = ({ type }: { type: string }) => {
                                 label="Password"
                                 placeholder="Enter your password"
                             />
-                            <Button type="submit" className="form-btn">
-                                Submit
+                            <Button
+                                type="submit"
+                                className="form-btn"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? (
+                                    <>
+                                        <Loader2
+                                            size={20}
+                                            className="animate-spin"
+                                        />{' '}
+                                        &nbsp; Loading...
+                                    </>
+                                ) : type === 'sign-in' ? (
+                                    'Sign In'
+                                ) : (
+                                    'Sign Up'
+                                )}
                             </Button>
                         </form>
                     </Form>
