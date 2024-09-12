@@ -3,6 +3,7 @@ import TotalBalanceBox from '@/components/TotalBalanceBox';
 import RightSidebar from './../../components/RightSidebar';
 import { getLoggedInUser } from '@/lib/actions/user.action';
 import { getAccounts } from '@/lib/actions/bank.action';
+import RecentTransactions from './../../components/RecentTransactions';
 
 const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
     const loggedIn = await getLoggedInUser();
@@ -31,7 +32,7 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
                         totalCurrentBalance={accounts?.totalCurrentBalance}
                     />
                 </header>
-                RECENT TRANSACTIONS
+                <RecentTransactions />
             </div>
             <RightSidebar
                 user={loggedIn}
