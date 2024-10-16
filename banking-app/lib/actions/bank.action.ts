@@ -12,7 +12,7 @@ import {
 import { plaidClient } from "../plaid";
 import { parseStringify } from "../utils";
 
-// import { getTransactionsByBankId } from "./transaction.actions";
+import { getTransactionsByBankId } from "./transaction.action";
 import { getBanks, getBank } from "./user.action";
 
 // Get multiple bank accounts
