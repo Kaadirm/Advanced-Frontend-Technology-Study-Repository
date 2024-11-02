@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { topCategoryStyles } from '@/constants';
 import { cn } from '@/lib/utils';
 
+import { Progress } from './ui/progress';
+
 const Category = ({ category }: CategoryProps) => {
     const {
         bg,
@@ -27,6 +29,11 @@ const Category = ({ category }: CategoryProps) => {
                         {category.count}
                     </h3>
                 </div>
+                <Progress
+                    value={(category.count / category.totalCount) * 100}
+                    className={cn('h-2 w-full', progressBg)}
+                    indicatorClassName={cn('h-2 w-full', indicator)}
+                />
             </div>
         </div>
     );
